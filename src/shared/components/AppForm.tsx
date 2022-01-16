@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
+import Typography from "@mui/material/Typography";
 
 const Form = styled.form`
   display: flex;
@@ -10,10 +11,21 @@ const Form = styled.form`
 `;
 
 function AppForm({
+  mode,
   children,
   ...props
-}: PropsWithChildren<React.FormHTMLAttributes<HTMLFormElement>>) {
-  return <Form {...props}>{children}</Form>;
+}: PropsWithChildren<
+  { mode: "create" | "update" } & React.FormHTMLAttributes<HTMLFormElement>
+>) {
+  return (
+    <Form {...props}>
+      <Typography variant={"subtitle1"}>
+        {mode === "create" && "Cadastro"}
+        {mode === "update" && "Atualizar"}
+      </Typography>
+      {children}
+    </Form>
+  );
 }
 
 export default AppForm;

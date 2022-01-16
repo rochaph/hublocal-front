@@ -1,15 +1,11 @@
 import React from "react";
 import AppForm from "../../shared/components/AppForm";
-import Typography from "@mui/material/Typography";
 import StyledLabel from "../../shared/styleds/StyledLabel";
 import { Input, Select } from "@mui/material";
 
-function LocalForm() {
+function LocalForm({ mode }: { mode: "update" | "create" }) {
   return (
-    <AppForm>
-      <Typography variant={"subtitle1"} sx={{ mt: 4 }}>
-        Cadastro
-      </Typography>
+    <AppForm mode={mode}>
       <StyledLabel>CEP</StyledLabel>
       <Input type="text" name="cep" />
       <StyledLabel>Rua</StyledLabel>

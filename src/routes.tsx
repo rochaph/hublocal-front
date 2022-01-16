@@ -22,9 +22,27 @@ function AppRoutes() {
         <Route path="empresas" element={<Empresa />} />
         <Route path="locais" element={<Local />} />
         <Route path="responsaveis" element={<Responsavel />} />
-        <Route path="empresas/cadastro" element={<EmpresaForm />} />
-        <Route path="locais/cadastro" element={<LocalForm />} />
-        <Route path="responsaveis/cadastro" element={<ResponsavelForm />} />
+        <Route
+          path="empresas/cadastro"
+          element={<EmpresaForm mode={"create"} />}
+        />
+        <Route path="locais/cadastro" element={<LocalForm mode={"create"} />} />
+        <Route
+          path="responsaveis/cadastro"
+          element={<ResponsavelForm mode={"create"} />}
+        />
+        <Route
+          path="empresas/atualizar"
+          element={<EmpresaForm mode={"update"} />}
+        />
+        <Route
+          path="locais/atualizar"
+          element={<LocalForm mode={"update"} />}
+        />
+        <Route
+          path="responsaveis/atualizar"
+          element={<ResponsavelForm mode={"update"} />}
+        />
       </Route>
     </Routes>
   );

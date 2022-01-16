@@ -4,10 +4,9 @@ import StyledLabel from "../../shared/styleds/StyledLabel";
 import { Input, TextareaAutosize } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-function EmpresaForm() {
+function EmpresaForm({ mode }: { mode: "update" | "create" }) {
   return (
-    <AppForm>
-      <Typography variant={"subtitle1"}>Empresa</Typography>
+    <AppForm mode={mode}>
       <StyledLabel>Nome</StyledLabel>
       <Input type="text" name="nome" />
       <StyledLabel>CNPJ</StyledLabel>
@@ -24,7 +23,7 @@ function EmpresaForm() {
       <Typography variant={"subtitle1"} sx={{ mt: 4 }}>
         Local
       </Typography>
-      <StyledLabel>Cep</StyledLabel>
+      <StyledLabel>CEP</StyledLabel>
       <Input type="text" name="cep" />
       <StyledLabel>Rua</StyledLabel>
       <Input type="text" name="rua" />

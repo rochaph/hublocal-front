@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --port 3000",
+    "dev": "webpack serve --port 3000",
+    "start": "serve -s build",
     "build": "NODE_ENV=production webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "heroku-postbuild": "npm run build",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -74,6 +76,7 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.24.0",
     "react-router-dom": "^6.2.1",
+    "serve": "^13.0.2",
     "styled-components": "^5.3.3",
     "whatwg-fetch": "^3.6.2"
   },

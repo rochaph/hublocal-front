@@ -1,6 +1,5 @@
 import React from "react";
 import AppForm from "../../shared/components/AppForm";
-import Typography from "@mui/material/Typography";
 import StyledLabel from "../../shared/styleds/StyledLabel";
 import { Checkbox, Input, InputLabel, Select } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -14,12 +13,9 @@ const StyledBox = styled(Box)`
   margin-top: 2em;
 `;
 
-function ResponsavelForm() {
+function ResponsavelForm({ mode }: { mode: "update" | "create" }) {
   return (
-    <AppForm>
-      <Typography variant={"subtitle1"} sx={{ mt: 4 }}>
-        Cadastro
-      </Typography>
+    <AppForm mode={mode}>
       <StyledLabel>Nome</StyledLabel>
       <Input type="text" name="nome" />
       <StyledLabel>Telefone</StyledLabel>
