@@ -10,6 +10,7 @@ function Login() {
 
   return (
     <StyledHomeForm
+      data-testid="login-form"
       onSubmit={(e) => {
         e.preventDefault();
         navigate("/app");
