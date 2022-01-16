@@ -3,14 +3,14 @@ import styled from "styled-components";
 import Typography from "@mui/material/Typography";
 import { fluidRange } from "polished";
 import Button from "@mui/material/Button";
+import { FormGroup, FormGroupProps } from "@mui/material";
 
-const Form = styled.form`
+const Form = styled(FormGroup)`
   display: flex;
   flex-direction: column;
   margin: 4em auto;
   width: 20%;
   min-width: 20em;
-  padding: 4em;
   ${fluidRange(
     {
       prop: "width",
@@ -31,11 +31,9 @@ function AppForm({
   mode,
   children,
   ...props
-}: PropsWithChildren<
-  { mode: "create" | "update" } & React.FormHTMLAttributes<HTMLFormElement>
->) {
+}: PropsWithChildren<{ mode: "create" | "update" } & FormGroupProps>) {
   return (
-    <Form {...props}>
+    <Form {...props} sx={{ padding: { xs: 2, md: 4 } }}>
       <Typography variant={"subtitle1"}>
         {mode === "create" && "Cadastro"}
         {mode === "update" && "Atualizar"}
