@@ -19,8 +19,6 @@ const Form = styled.form`
     "1000px"
   )};
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
-  animation: slide 0.5s forwards;
-  animation-delay: 2s;
 `;
 
 function StyledHomeForm({
