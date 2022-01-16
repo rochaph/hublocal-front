@@ -14,7 +14,9 @@ const HomePage = styled.div`
 function Home() {
   const { pathname } = useLocation();
   return (
-    <HomeLayout>{pathname === "/" ? <HomePage /> : <Outlet />}</HomeLayout>
+    <HomeLayout>
+      {pathname === "/" ? <HomePage data-testid="homepage" /> : <Outlet />}
+    </HomeLayout>
   );
 }
 
