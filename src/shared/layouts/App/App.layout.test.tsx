@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import React from "react";
 import AppLayout from "./App.layout";
 
 describe("App.layout", () => {
   beforeEach(() => {
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <AppLayout>
           <div data-testid="testDiv"></div>
         </AppLayout>
-      </BrowserRouter>
+      </MemoryRouter>
     );
   });
 

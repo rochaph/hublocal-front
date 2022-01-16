@@ -3,21 +3,11 @@ import styled from "styled-components";
 import { fluidRange } from "polished";
 
 const Form = styled.form`
-  background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60%;
-  ${fluidRange(
-    {
-      prop: "width",
-      fromSize: "18em",
-      toSize: "22em",
-    },
-    "30em",
-    "40em"
-  )};
+  width: 18em;
   ${fluidRange(
     {
       prop: "padding",
@@ -30,11 +20,11 @@ const Form = styled.form`
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
 `;
 
-function StyledHomeForm({
+function HomeForm({
   children,
   ...props
 }: PropsWithChildren<FormHTMLAttributes<HTMLFormElement>>) {
   return <Form {...props}> {children}</Form>;
 }
 
-export default StyledHomeForm;
+export default HomeForm;
