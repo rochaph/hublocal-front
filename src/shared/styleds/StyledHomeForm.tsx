@@ -1,8 +1,9 @@
 import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 import { fluidRange } from "polished";
+import { FormGroup, FormGroupProps } from "@mui/material";
 
-const Form = styled.form`
+const Form = styled(FormGroup)`
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -24,7 +25,7 @@ const Form = styled.form`
 function StyledHomeForm({
   children,
   ...props
-}: PropsWithChildren<React.FormHTMLAttributes<HTMLFormElement>>) {
+}: PropsWithChildren<FormGroupProps>) {
   return <Form {...props}> {children}</Form>;
 }
 
