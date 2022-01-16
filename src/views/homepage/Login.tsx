@@ -12,7 +12,7 @@ function Login() {
     <StyledHomeForm
       onSubmit={(e) => {
         e.preventDefault();
-        navigate("/app", { replace: true });
+        navigate("/app");
       }}
     >
       <StyledLabel sx={{ mt: 2 }}> Login </StyledLabel>

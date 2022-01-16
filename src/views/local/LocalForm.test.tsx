@@ -1,5 +1,5 @@
 //TODO
 
-describe("AppForm", () => {
+describe("LocalForm", () => {
   test("TODO", () => expect(true).toBeDefined());
 });

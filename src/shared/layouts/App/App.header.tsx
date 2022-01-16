@@ -65,7 +65,7 @@ function AppHeader() {
                 textTransform: "none",
                 marginRight: "2em",
               }}
-              onClick={() => navigate("/app", { replace: true })}
+              onClick={() => navigate("/app")}
             >
               <Typography variant="h6" component="div" sx={{}}>
                 Hublocal
@@ -87,7 +87,7 @@ function AppHeader() {
                 <HeaderButton
                   key={key}
                   style={{ marginLeft: label === "Sair" ? "auto" : "none" }}
-                  onClick={() => navigate(route, { replace: true })}
+                  onClick={() => navigate(route)}
                 >
                   {label}
                 </HeaderButton>
@@ -102,7 +102,7 @@ function AppHeader() {
                 sx={{ mx: 2 }}
                 key={key}
                 onClick={() => {
-                  navigate(route, { replace: true });
+                  navigate(route);
                   setOpen(false);
                 }}
               >

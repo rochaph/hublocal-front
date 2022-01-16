@@ -7,6 +7,9 @@ import Dashboard from "./views/dashboard/Dashboard";
 import Responsavel from "./views/responsavel/Responsavel";
 import Local from "./views/local/Local";
 import Empresa from "./views/empresa/Empresa";
+import EmpresaForm from "./views/empresa/EmpresaForm";
+import LocalForm from "./views/local/LocalForm";
+import ResponsavelForm from "./views/responsavel/ResponsavelForm";
 
 function AppRoutes() {
   return (
@@ -19,6 +22,9 @@ function AppRoutes() {
         <Route path="empresas" element={<Empresa />} />
         <Route path="locais" element={<Local />} />
         <Route path="responsaveis" element={<Responsavel />} />
+        <Route path="empresas/cadastro" element={<EmpresaForm />} />
+        <Route path="locais/cadastro" element={<LocalForm />} />
+        <Route path="responsaveis/cadastro" element={<ResponsavelForm />} />
       </Route>
     </Routes>
   );

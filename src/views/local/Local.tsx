@@ -71,7 +71,11 @@ function Local() {
   const navigate = useNavigate();
 
   return (
-    <AppTable onClickAdd={() => navigate("/")} columns={columns} rows={rows} />
+    <AppTable
+      onClickAdd={() => navigate("/app/locais/cadastro")}
+      columns={columns}
+      rows={rows}
+    />
   );
 }
 

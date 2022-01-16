@@ -62,7 +62,11 @@ function Empresa() {
   const navigate = useNavigate();
 
   return (
-    <AppTable onClickAdd={() => navigate("/")} columns={columns} rows={rows} />
+    <AppTable
+      onClickAdd={() => navigate("/app/empresas/cadastro")}
+      columns={columns}
+      rows={rows}
+    />
   );
 }
 
