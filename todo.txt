@@ -1,0 +1,48 @@
+● React + Typescript
+● Material UI React
+● Styled Components
+● Polished
+● CSS Flexbox + CSS Grid
+● Design Mobile First
+● Redux + Duck Patterns
+● Conceitos de Programação Funcional em JS (pelo menos .map, .filter e .reduce)
+
+● React Test Library
+● BDD
+● TDD
+● Deploy em algum servidor
+
+● Sign In (tela inicial)
+● Sign Up
+● CRUD de Empresas
+● CRUD de Locais
+● Os responsáveis devem ser criados no mesmo form de Empresas e Locais
+
+# TODO
+LAYOUT
+ADICIONAR DOCKER
+
+Sign Up:
+● Cadastrar um usuário no sistema
+● Validar os campos do formulário
+● Validar o data types dos campos no banco de dados
+-Sign In:
+● Utilizar validação de um JWT para iniciar uma sessão. A sessão permanece ativa
+enquanto o JWT utilizado for válido.
+● Quando o JWT expirar, forçar o logout do usuário automaticamente.
+- Logout: Encerrar a sessão ativa quando solicitado.
+Entidades:
+- Empresas:
+● Empresas possuem nome, CNPJ e descrição
+- Locais:
+● Locais possuem nome e endereço
+● Um local deve sempre pertencer a uma empresa
+● Endereços devem ser obtidos através de uma API de CEP
+- Responsáveis:
+● Responsáveis possuem nome, telefone e endereço
+● Endereços devem ser obtidos através de uma API de CEP
+- Relacionamentos:
+● Um usuário pode gerenciar N empresas
+● Uma empresa deve possuir um ou mais responsáveis, dentre estes um principal
+● Uma empresa pode possuir um ou mais Locais
+● Um local deve possuir um ou mais responsáveis, dentre estes um principal
