@@ -5,9 +5,11 @@ import React from "react";
 
 function AppTable({
   onClickAdd,
+  addOption = true,
   ...props
 }: DataGridProps & {
-  onClickAdd: () => unknown;
+  addOption?: boolean;
+  onClickAdd?: () => unknown;
 }) {
   return (
     <Box
@@ -17,28 +19,30 @@ function AppTable({
         height: "100%",
       }}
     >
-      <Box
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "end",
-          width: "100%",
-          height: "4em",
-        }}
-      >
-        <Button
-          data-testid="add-button"
-          variant="contained"
-          sx={{
-            mr: 4,
-            minWidth: "unset",
+      {addOption && (
+        <Box
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "end",
+            width: "100%",
+            height: "4em",
           }}
-          color="success"
-          onClick={onClickAdd}
         >
-          +
-        </Button>
-      </Box>
+          <Button
+            data-testid="add-button"
+            variant="contained"
+            sx={{
+              mr: 4,
+              minWidth: "unset",
+            }}
+            color="success"
+            onClick={onClickAdd}
+          >
+            +
+          </Button>
+        </Box>
+      )}
       <DataGrid
         {...props}
         pageSize={5}

@@ -23,31 +23,26 @@ function Local() {
     {
       field: "cep",
       headerName: "CEP",
-      resizable: true,
       flex: 1,
     },
     {
       field: "rua",
       headerName: "Rua",
-      resizable: true,
       flex: 1,
     },
     {
       field: "bairro",
       headerName: "Bairro",
-      resizable: true,
       flex: 1,
     },
     {
       field: "cidade",
       headerName: "Cidade",
-      resizable: true,
       flex: 1,
     },
     {
       field: "uf",
       headerName: "UF",
-      resizable: true,
       flex: 1,
     },
     {

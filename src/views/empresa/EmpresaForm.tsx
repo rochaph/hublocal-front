@@ -14,7 +14,7 @@ function EmpresaForm({ mode }: { mode: "update" | "create" }) {
       <StyledLabel>Descricao</StyledLabel>
       <TextareaAutosize name="descricao" minRows="10" />
       <Typography variant={"subtitle1"} sx={{ mt: 4 }}>
-        Responsável
+        Responsáveis
       </Typography>
       <StyledLabel>Nome</StyledLabel>
       <Input type="text" />

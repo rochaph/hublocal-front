@@ -17,31 +17,26 @@ function Empresa() {
     {
       field: "nome",
       headerName: "Nome",
-      editable: true,
       flex: 1,
     },
     {
       field: "cnpj",
       headerName: "CNPJ",
-      editable: true,
       flex: 1,
     },
     {
       field: "descricao",
       headerName: "Descrição",
-      editable: true,
       flex: 1,
     },
     {
       field: "locais",
       headerName: "Locais",
-      editable: true,
       flex: 1,
     },
     {
       field: "Responsáveis",
       headerName: "Responsáveis",
-      editable: true,
       flex: 1,
     },
     {

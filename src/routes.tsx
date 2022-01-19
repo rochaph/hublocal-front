@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { hot } from "react-hot-loader/root";
 import { Route, Routes } from "react-router-dom";
 import Home from "./views/homepage/Home";
 import Login from "./views/homepage/Login";
@@ -10,8 +11,19 @@ import Empresa from "./views/empresa/Empresa";
 import EmpresaForm from "./views/empresa/EmpresaForm";
 import LocalForm from "./views/local/LocalForm";
 import ResponsavelForm from "./views/responsavel/ResponsavelForm";
+import jwtDecode from "jwt-decode";
+import { useNavigate } from "react-router";
 
 function AppRoutes() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    const isAuthenticated =
+      token !== null &&
+      (jwtDecode(token) as { exp: number }).exp > Date.now() / 1000;
+
+    if (!isAuthenticated) navigate("/");
+  }, []);
   return (
     <Routes>
       <Route path="/" element={<Home />}>
@@ -48,4 +60,4 @@ function AppRoutes() {
   );
 }
 
-export default AppRoutes;
+export default hot(AppRoutes);

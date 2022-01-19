@@ -1,14 +1,20 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
 
 const prod = process.env.NODE_ENV === "production";
 
 module.exports = {
   mode: prod ? "production" : "development",
-  entry: "./src/index.tsx",
+  entry: ["react-hot-loader/patch", "./src/index.tsx"],
   output: {
     path: `${__dirname}/dist/`,
+  },
+  resolve: {
+    alias: {
+      "react-dom": "@hot-loader/react-dom",
+    },
   },
   module: {
     rules: [
@@ -47,6 +53,9 @@ module.exports = {
   },
   devtool: prod ? undefined : "source-map",
   plugins: [
+    new Dotenv({
+      path: ".env",
+    }),
     new HtmlWebpackPlugin({
       template: `${__dirname}/public/index.html`,
     }),

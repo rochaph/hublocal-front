@@ -1,7 +1,4 @@
-import type { Config } from "@jest/types";
-
-// Sync object
-const config: Config.InitialOptions = {
+module.exports = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   verbose: true,
@@ -10,5 +7,3 @@ const config: Config.InitialOptions = {
       "jest-transform-stub",
   },
 };
-
-export default config;

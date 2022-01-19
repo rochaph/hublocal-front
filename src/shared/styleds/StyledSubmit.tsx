@@ -4,7 +4,7 @@ import Button, { ButtonProps } from "@mui/material/Button";
 import { PropsWithChildren } from "react";
 
 const Submit = styled(Button)`
-  margin-top: 4em;
+  margin-top: 3em;
 `;
 
 function StyledSubmit({ children, ...props }: PropsWithChildren<ButtonProps>) {

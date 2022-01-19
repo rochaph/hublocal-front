@@ -3,6 +3,7 @@ import AppLayout from "../../shared/layouts/App/App.layout";
 import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Welcome from "../../assets/Welcome.jpeg";
+import AuthComponent from "../../shared/components/AuthComponent";
 
 const WelcomeScreen = styled.div`
   display: flex;
@@ -15,13 +16,15 @@ const WelcomeScreen = styled.div`
 function Dashboard() {
   const { pathname } = useLocation();
   return (
-    <AppLayout>
-      {pathname === "/app" ? (
-        <WelcomeScreen data-testid="welcome" />
-      ) : (
-        <Outlet data-testid="outlet" />
-      )}
-    </AppLayout>
+    <AuthComponent>
+      <AppLayout>
+        {pathname === "/app" ? (
+          <WelcomeScreen data-testid="welcome" />
+        ) : (
+          <Outlet data-testid="outlet" />
+        )}
+      </AppLayout>
+    </AuthComponent>
   );
 }
 

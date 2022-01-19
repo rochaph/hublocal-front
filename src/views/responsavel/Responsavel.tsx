@@ -2,7 +2,6 @@ import React from "react";
 import { GridCellParams, GridColDef } from "@mui/x-data-grid";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
-import ActionCell from "../../shared/components/ActionCell";
 import AppTable from "../../shared/components/AppTable";
 import { useNavigate } from "react-router";
 
@@ -23,26 +22,17 @@ function Responsavel() {
     {
       field: "nome",
       headerName: "Nome",
-      resizable: true,
       flex: 1,
     },
     {
       field: "telefone",
       headerName: "Telefone",
-      resizable: true,
       flex: 1,
     },
     {
-      field: "empresas",
-      headerName: "Empresas",
-      resizable: true,
+      field: "empresa",
+      headerName: "Empresa",
       flex: 1,
-    },
-    {
-      field: "actions",
-      headerName: "Ações",
-      renderCell: ActionCell(deleteResponsavel, updateResponsavel),
-      flex: 0,
     },
   ];
 
@@ -54,13 +44,7 @@ function Responsavel() {
   ];
   const navigate = useNavigate();
 
-  return (
-    <AppTable
-      onClickAdd={() => navigate("/app/responsaveis/cadastro")}
-      columns={columns}
-      rows={rows}
-    />
-  );
+  return <AppTable addOption={false} columns={columns} rows={rows} />;
 }
 
 export default Responsavel;
