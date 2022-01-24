@@ -50,6 +50,8 @@ function Signup() {
       .catch((e: AxiosError) => {
         if (e.response?.status) {
           handleApiError(e.response.status, e.response.data);
+        } else {
+          setApiError("Ocorreu um erro, contate o administrador do sistema.");
         }
         setIsLoading(false);
       });
