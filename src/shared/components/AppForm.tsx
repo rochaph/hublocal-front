@@ -14,7 +14,7 @@ const Form = styled.form`
     {
       prop: "width",
       fromSize: "300px",
-      toSize: "400px",
+      toSize: "540px",
     },
     "400px",
     "1000px"
@@ -49,7 +49,7 @@ function AppForm({
         {mode === "update" && "Atualizar"}
       </Typography>
       {children}
-      <AppFormButton variant="contained">
+      <AppFormButton type="submit" variant="contained">
         {mode === "create" && "Cadastrar"}
         {mode === "update" && "Atualizar"}
       </AppFormButton>

@@ -1,56 +1,53 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import { DataGrid, DataGridProps, ptBR } from "@mui/x-data-grid";
 import React from "react";
+import ButtonAdd from "./ButtonAdd";
+import Typography from "@mui/material/Typography";
+import styled from "styled-components";
+import Box from "@mui/material/Box";
+
+const TableContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const HeaderContainer = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 1em 3em;
+`;
 
 function AppTable({
+  title,
   onClickAdd,
   addOption = true,
   ...props
 }: DataGridProps & {
+  title: string;
   addOption?: boolean;
   onClickAdd?: () => unknown;
 }) {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-      }}
-    >
-      {addOption && (
-        <Box
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "end",
-            width: "100%",
-            height: "4em",
-          }}
-        >
-          <Button
-            data-testid="add-button"
-            variant="contained"
-            sx={{
-              mr: 4,
-              minWidth: "unset",
-            }}
-            color="success"
-            onClick={onClickAdd}
-          >
-            +
-          </Button>
-        </Box>
-      )}
+    <TableContainer>
+      <HeaderContainer>
+        <Typography variant="h6">{title}</Typography>
+        {addOption && (
+          <ButtonAdd data-testid="add-button" onClick={onClickAdd} />
+        )}
+      </HeaderContainer>
       <DataGrid
         {...props}
-        pageSize={5}
-        rowsPerPageOptions={[5, 10, 20]}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
         disableSelectionOnClick
+        disableColumnMenu
+        disableColumnFilter
+        disableColumnSelector
+        paginationMode="server"
         localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
       />
-    </Box>
+    </TableContainer>
   );
 }
 

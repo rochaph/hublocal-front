@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { InputLabel, InputLabelProps } from "@mui/material";
 
 const Label = styled(InputLabel)`
-  margin-top: 2em;
+  margin: 2em 0 1em 0;
 `;
 
 function StyledLabel({

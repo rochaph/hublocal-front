@@ -7,7 +7,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "unused-imports"],
   rules: {
+    "react/prop-types": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [

@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router";
 import { ListItemButton, ListItemText } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useDispatch } from "react-redux";
+import { removeAuthentication } from "../../../store/auth/auth.slice";
 
 const HeaderButton = styled(Button)`
   color: #fff;
@@ -18,23 +20,20 @@ function AppHeader() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [collapse, setCollapse] = useState(false);
-  const data = [{ label: "teste" }];
-  const buttons = [
+  const dispatch = useDispatch();
+  const buttons: { label: string; route: string; action?: () => unknown }[] = [
     {
       label: "Empresas",
-      route: "empresas",
+      route: "/app/empresas",
     },
     {
       label: "Locais",
-      route: "locais",
-    },
-    {
-      label: "Responsáveis",
-      route: "responsaveis",
+      route: "/app/locais",
     },
     {
       label: "Sair",
       route: "/",
+      action: logout,
     },
   ];
 
@@ -48,6 +47,10 @@ function AppHeader() {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
+
+  function logout() {
+    dispatch(removeAuthentication());
+  }
 
   return (
     <header>
@@ -83,11 +86,14 @@ function AppHeader() {
                 </ListItemButton>
               </Box>
             ) : (
-              buttons.map(({ route, label }, key) => (
+              buttons.map(({ route, label, action }, key) => (
                 <HeaderButton
                   key={key}
                   style={{ marginLeft: label === "Sair" ? "auto" : "none" }}
-                  onClick={() => navigate(route)}
+                  onClick={() => {
+                    if (action) action();
+                    navigate(route);
+                  }}
                 >
                   {label}
                 </HeaderButton>
@@ -97,13 +103,14 @@ function AppHeader() {
 
           {collapse &&
             open &&
-            buttons.map(({ route, label }, key) => (
+            buttons.map(({ route, label, action }, key) => (
               <ListItemButton
                 sx={{ mx: 2 }}
                 key={key}
                 onClick={() => {
-                  navigate(route);
-                  setOpen(false);
+                  if (action) action();
+                  navigate(route, { replace: true });
+                  setOpen(!open);
                 }}
               >
                 <ListItemText

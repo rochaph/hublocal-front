@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  hublocalfront:
+    container_name: hublocalfront
+    image: hublocalfront
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:80
+  
+    

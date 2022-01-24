@@ -17,6 +17,7 @@ describe("AppTable", () => {
         columns={columns}
         rows={rows}
         onClickAdd={() => console.log("added")}
+        title={"title"}
       />
     );
   });
@@ -31,5 +32,10 @@ describe("AppTable", () => {
     const addButton = screen.getByTestId("add-button");
     fireEvent.click(addButton);
     expect(spy).toBeCalledWith("added");
+  });
+
+  test("should render title", () => {
+    const text = screen.getByText("title");
+    expect(text).toBeDefined();
   });
 });

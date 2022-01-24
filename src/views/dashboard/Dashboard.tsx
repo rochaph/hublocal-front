@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Welcome from "../../assets/Welcome.jpeg";
 import AuthComponent from "../../shared/components/AuthComponent";
+import Message from "../../shared/components/Message";
 
 const WelcomeScreen = styled.div`
   display: flex;
@@ -17,13 +18,17 @@ function Dashboard() {
   const { pathname } = useLocation();
   return (
     <AuthComponent>
-      <AppLayout>
-        {pathname === "/app" ? (
-          <WelcomeScreen data-testid="welcome" />
-        ) : (
-          <Outlet data-testid="outlet" />
-        )}
-      </AppLayout>
+      <>
+        <Message />
+        <AppLayout>
+          {pathname === "/app" ? (
+            <WelcomeScreen data-testid="welcome" />
+          ) : (
+            <Outlet data-testid="outlet" />
+          )}
+        </AppLayout>
+      </>
+      const initialState = {};
     </AuthComponent>
   );
 }

@@ -9,31 +9,17 @@ import { useAppDispatch } from "../../store/hooks";
 import { authenticate } from "../../store/auth/auth.slice";
 import { AxiosResponse, AxiosError } from "axios";
 import LoadingCircle from "../../shared/components/LoadingCircle";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
+import { FieldError, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Alert } from "@mui/material";
-import { register as registerUsuario } from "../../services/auth/auth.service";
+import { AuthService } from "../../services/auth/auth.service";
+import { SignUpValidation } from "../../validations/Auth.validation";
 
 interface IFormInput {
   login: string;
   senha: string;
   senha_confirmacao: string;
 }
-
-const schema = yup
-  .object({
-    login: yup.string().min(6, "Login deve conter pelo menos 6 caracteres."),
-    senha: yup.string().min(8, "Senha deve conter pelo menos 8 caracteres."),
-    senha_confirmacao: yup
-      .string()
-      .test(
-        "passwords-match",
-        "As senhas não coincidem",
-        (value, context) => context.parent.senha === value
-      ),
-  })
-  .required();
 
 function Signup() {
   const navigate = useNavigate();
@@ -45,7 +31,8 @@ function Signup() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>({ resolver: yupResolver(schema) });
+  } = useForm<IFormInput>({ resolver: yupResolver(SignUpValidation) });
+  const authService = new AuthService();
 
   useEffect(() => {
     setErrors(Object.entries(errors).length !== 0);
@@ -53,7 +40,8 @@ function Signup() {
 
   function handleRegister(data: IFormInput) {
     setIsLoading(true);
-    registerUsuario(data.login, data.senha, data.senha_confirmacao)
+    authService
+      .register(data.login, data.senha, data.senha_confirmacao)
       .then(({ data }: AxiosResponse<{ auth_token: string }>) => {
         dispatch(authenticate(data.auth_token));
         setIsLoading(false);
@@ -88,7 +76,7 @@ function Signup() {
     <Box>
       <LoadingCircle open={isLoading} />
       <HomeForm
-        data-testid="login-form"
+        data-testid="signup-form"
         onSubmit={handleSubmit(handleRegister)}
         onChange={() => setApiError("")}
       >
@@ -99,10 +87,10 @@ function Signup() {
         )}
         {hasErrors && (
           <Alert severity="error">
-            Login inválido.
-            <p> {errors.login?.message} </p>
-            <p>{errors.senha?.message} </p>
-            <p>{errors.senha_confirmacao?.message}</p>
+            Dados inválidos.
+            {Object.values(errors).map((error, index) => (
+              <p key={index}>{(error as FieldError).message}</p>
+            ))}
           </Alert>
         )}
         <StyledLabel error={!!errors.login} sx={{ mt: 2 }}>

@@ -2,15 +2,19 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import React from "react";
 import AppLayout from "./App.layout";
+import { Provider } from "react-redux";
+import { store } from "../../../store/store";
 
 describe("App.layout", () => {
   beforeEach(() => {
     render(
-      <MemoryRouter>
-        <AppLayout>
-          <div data-testid="testDiv"></div>
-        </AppLayout>
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter>
+          <AppLayout>
+            <div data-testid="testDiv"></div>
+          </AppLayout>
+        </MemoryRouter>
+      </Provider>
     );
   });
 

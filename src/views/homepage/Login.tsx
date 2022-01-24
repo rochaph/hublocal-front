@@ -5,28 +5,21 @@ import HomeForm from "../../shared/components/HomeForm";
 import StyledLabel from "../../shared/styleds/StyledLabel";
 import StyledSubmit from "../../shared/styleds/StyledSubmit";
 import Box from "@mui/material/Box";
-import { login } from "../../services/auth/auth.service";
+import { AuthService } from "../../services/auth/auth.service";
 import { useAppDispatch } from "../../store/hooks";
 import { authenticate } from "../../store/auth/auth.slice";
 import { AxiosResponse } from "axios";
 import LoadingCircle from "../../shared/components/LoadingCircle";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
+import { FieldError, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import { Alert } from "@mui/material";
+import { LoginValidation } from "../../validations/Auth.validation";
 
 interface IFormInput {
   login: string;
   senha: string;
 }
-
-const schema = yup
-  .object({
-    login: yup.string().min(6, "Login deve conter pelo menos 6 caracteres."),
-    senha: yup.string().min(8, "Senha deve conter pelo menos 8 caracteres."),
-  })
-  .required();
 
 const ErrorText = styled.p`
   color: red;
@@ -41,11 +34,13 @@ function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>({ resolver: yupResolver(schema) });
+  } = useForm<IFormInput>({ resolver: yupResolver(LoginValidation) });
+  const authService = new AuthService();
 
   function handleLogin(data: IFormInput) {
     setIsLoading(true);
-    login(data.login, data.senha)
+    authService
+      .login(data.login, data.senha)
       .then(({ data }: AxiosResponse<{ access_token: string }>) => {
         dispatch(authenticate(data.access_token));
         setIsLoading(false);
@@ -73,8 +68,9 @@ function Login() {
         {(!!errors.login || errors.senha) && (
           <Alert severity="error">
             Login inválido.
-            <p> {errors.senha?.message} </p>
-            <p> {errors.login?.message} </p>
+            {Object.values(errors).map((error, index) => (
+              <p key={index}>{(error as FieldError).message}</p>
+            ))}
           </Alert>
         )}
         <StyledLabel error={!!errors.login} sx={{ mt: 2 }}>

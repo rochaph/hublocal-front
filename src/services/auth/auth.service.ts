@@ -1,25 +1,25 @@
 import { createClient } from "../client.service";
 import { AxiosInstance } from "axios";
 
-const client: AxiosInstance = createClient();
+export class AuthService {
+  private client: AxiosInstance;
 
-export const register = (
-  login: string,
-  senha: string,
-  senha_confirmacao: string
-) => {
-  return client.post("/auth/register", {
-    login,
-    senha,
-    senha_confirmacao,
-  });
-};
+  constructor() {
+    this.client = createClient();
+  }
 
-export const login = (login: string, senha: string) => {
-  return client.post("/auth/login", {
-    login,
-    senha,
-  });
-};
+  register(login: string, senha: string, senha_confirmacao: string) {
+    return this.client.post("/auth/register", {
+      login,
+      senha,
+      senha_confirmacao,
+    });
+  }
 
-export default { register, login };
+  login(login: string, senha: string) {
+    return this.client.post("/auth/login", {
+      login,
+      senha,
+    });
+  }
+}
