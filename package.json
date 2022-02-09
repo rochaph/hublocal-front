@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": ".",
+  "homepage": "/",
   "scripts": {
     "dev": "webpack serve --port 3000",
     "start": "NODE_ENV=production serve -s dist",
