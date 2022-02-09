@@ -28,7 +28,6 @@ function Dashboard() {
           )}
         </AppLayout>
       </>
-      const initialState = {};
     </AuthComponent>
   );
 }
